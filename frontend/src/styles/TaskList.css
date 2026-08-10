@@ -1,0 +1,67 @@
+.task-carousel {
+  display: flex;
+  align-items: stretch;
+  gap: var(--spacing-3);
+}
+
+.task-carousel-viewport {
+  overflow: hidden;
+  flex: 1;
+  min-width: 0;
+}
+
+.task-carousel-track {
+  display: flex;
+}
+
+.task-carousel-slide {
+  flex-shrink: 0;
+  padding: var(--spacing-2);
+  box-sizing: border-box;
+}
+
+.task-carousel-slide.draggable {
+  cursor: grab;
+}
+
+.task-carousel-slide.draggable:active {
+  cursor: grabbing;
+}
+
+.carousel-arrow {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  border-radius: 50%;
+  font-size: 20px;
+  line-height: 1;
+  color: var(--color-text-muted);
+  align-self: center;
+}
+
+.carousel-arrow:hover {
+  background: var(--color-accent);
+  color: white;
+  border-color: var(--color-accent);
+}
+
+.task-list-empty {
+  text-align: center;
+  color: var(--color-text-muted);
+  padding: var(--spacing-8) 0;
+}
+
+@media (max-width: 640px) {
+  .task-carousel-slide {
+    padding: var(--spacing-1);
+  }
+
+  .carousel-arrow {
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+  }
+}
