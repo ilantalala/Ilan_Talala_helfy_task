@@ -3,7 +3,11 @@ import cors from 'cors'
 import tasksRouter from './routes/tasks.js'
 import { notFoundHandler, errorHandler } from './middleware/errorHandler.js'
 
-process.loadEnvFile('.env')
+try {
+  process.loadEnvFile('.env')
+} catch {
+  // no .env file present - fall back to defaults below
+}
 
 const app = express()
 const PORT = process.env.PORT || 4000

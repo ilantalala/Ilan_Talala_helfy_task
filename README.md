@@ -1,6 +1,3 @@
-# Task Manager
-
-A full-stack task manager built as a learning exercise: a React (Vite) frontend talking to an Express backend with in-memory storage. The centerpiece is a hand-built infinite carousel for the task list — no carousel library, implemented from scratch with CSS transforms and a clone-padding technique.
 
 ## Tech Stack
 
@@ -36,6 +33,7 @@ Requires Node.js v20.6+ (uses native `.env` file loading and `process.loadEnvFil
 # Backend
 cd backend
 npm install
+cp .env.example .env   # optional - defaults to PORT=4000 if skipped
 
 # Frontend (separate terminal)
 cd frontend
@@ -97,7 +95,7 @@ Any unmatched route returns `404 { "error": "Route not found" }`; unexpected ser
 - **Drag-and-drop reordering is only enabled when viewing the default, unfiltered/unsorted/unsearched list.** Dragging within a filtered, sorted, or searched subset doesn't have an unambiguous mapping back to the full task order, so it's disabled (not draggable) in those views rather than guessing. Uses native HTML5 drag-and-drop, so it works with a mouse but not touch/mobile — a real limitation worth knowing about.
 - **`localStorage` is a cache, not a data store.** The backend is always the source of truth; the frontend caches the last-known task list so a page refresh shows content instantly instead of a blank loading state, then reconciles with a fresh fetch from the server in the background.
 - **Dark/light theme** is implemented entirely through CSS custom properties (`--color-*` variables) redefined under a `[data-theme='dark']` selector — no per-component dark-mode styling needed. Defaults to the OS/browser's `prefers-color-scheme` on first visit, then remembers manual toggles via `localStorage`.
-- **No comments in code** beyond what's needed to explain non-obvious behavior — favored clear naming and small functions over documentation-heavy code throughout.
+
 
 ### Bonus features implemented
 
@@ -106,3 +104,5 @@ All six were built: search, sorting (by newest/oldest/priority/title), task due 
 ## Time Spent
 
 This was built interactively and iteratively rather than against a stopwatch, so exact durations per section weren't tracked. Roughly, in order of effort: the carousel mechanism (clone-padding + reset-jump) was the single most time-consuming piece to get right, followed by the backend CRUD + validation layer, then the CSS/theming pass, with the six bonus features (search, sort, due dates, theme, localStorage, drag-and-drop) making up the remaining, larger share of total effort — drag-and-drop being the most involved of those given its interaction with the carousel.
+
+
